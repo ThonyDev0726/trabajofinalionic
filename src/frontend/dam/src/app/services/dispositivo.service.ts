@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { Dispositivo } from '../interfaces/dispositivos';
-
+import { Electrovalvulas } from '../interfaces/electrovalvulas';
+import { Mediciones } from '../interfaces/mediciones';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,13 @@ export class DispositivoService {
   getListadoDispositivos (): Promise<Dispositivo[]> {
     return firstValueFrom(this._http.get<Dispositivo[]>('http://localhost:8000/devices'))
   }
-  getListadoElectrovalvulas (): Promise<any> {
-    return firstValueFrom(this._http.get('http://localhost:8000/electrovalvulas'))
+  getListadoElectrovalvulas (): Promise<Electrovalvulas[]> {
+    return firstValueFrom(this._http.get<Electrovalvulas[]>('http://localhost:8000/electrovalvulas'))
   }
 
-  getListadoMediciones (): Promise<any> {
-    return firstValueFrom(this._http.get('http://localhost:8000/mediciones'))
+  getListadoMediciones (): Promise<Mediciones[]> {
+    return firstValueFrom(this._http.get<Mediciones[]>('http://localhost:8000/mediciones'))
   }
+
+ 
 }
