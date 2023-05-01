@@ -1,7 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Dispositivo</ion-title>
+    <ion-title>Dispositivos</ion-title>
     <!-- <ion-title>dispositivo {{ observable$ | async }}</ion-title> -->
+    <ion-item>
+      <ion-input label="Default input"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Medicion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Valor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Fecha"></ion-input>
+    </ion-item>
     <ion-list>
       <ion-item *ngFor="let listad of listadispositivo">
         <ion-label>{{listad.nombre}}</ion-label>
@@ -22,7 +34,6 @@
         <ion-label>{{listae.nombre}}</ion-label>
       </ion-item>
     </ion-list>
-  
   </ion-toolbar>
 
   <ion-toolbar>
@@ -36,19 +47,47 @@
         <ion-label>{{listam.dispositivoId}}</ion-label>
       </ion-item>
     </ion-list>
-  
+
   </ion-toolbar>
-  
+
   <!--<button (click)="unsubscribe()">Unsub</button>
   <br>
   <button (click)="subscribe()">Sub</button>
 </ion-header>-->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">dispositivo</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  </ion-content>
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">dispositivo</ion-title>
+      <ion-title>
+        Mediciones de Dispositivos
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button routerLink="/crear">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
-</ion-content>
 
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let persona of personas">
+        <ion-label>{{ Medicion.nombre }}</ion-label>
+        <ion-button routerLink="/detalles/{{ Medicion.id }}" slot="end">
+          <ion-icon name="eye"></ion-icon>
+        </ion-button>
+        <ion-button routerLink="/editar/{{ Medicion.id }}" slot="end">
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+        <ion-button (click)="deleteMediocion(Medicion.id)" slot="end">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>

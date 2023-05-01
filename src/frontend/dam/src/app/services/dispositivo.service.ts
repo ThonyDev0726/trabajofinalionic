@@ -22,6 +22,12 @@ export class DispositivoService {
   getListadoMediciones (): Promise<Mediciones[]> {
     return firstValueFrom(this._http.get<Mediciones[]>('http://localhost:8000/mediciones'))
   }
+  getUpdateMedicion (): Promise<Mediciones[]> {
+    return firstValueFrom(this._http.get<Mediciones.idMedicion>('http://localhost:8000/medicionesUpdate'))
+  }
+  getDeleteMedicion (): Promise<Mediciones[]> {
+    return firstValueFrom(this._http.get<Mediciones.idMedicion>('http://localhost:8000/medicionesDelete'))
+  }
 
  
 }
